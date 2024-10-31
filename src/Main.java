@@ -5,16 +5,16 @@ class Car {
         this.engine = new Engine();
     }
 
-    public Engine getEngine() {
-        return engine;
+    // Menyediakan method untuk memulai mesin, tanpa memaparkan detail Engine
+    public void startEngine() {
+        engine.ignite();
+        engine.checkOilLevel();
     }
 }
 
 class Driver {
     public void startCar(Car car) {
-        // Driver mengakses detail Engine untuk menyalakan mobil
-        car.getEngine().ignite();
-        car.getEngine().checkOilLevel();
+        car.startEngine(); // Driver hanya meminta Car untuk menyalakan mesin
         System.out.println("Car started");
     }
 }
@@ -33,6 +33,6 @@ public class Main {
     public static void main(String[] args) {
         Car car = new Car();
         Driver driver = new Driver();
-        driver.startCar(car); // Driver secara langsung mengakses Engine
+        driver.startCar(car); // Driver sekarang tidak langsung mengakses Engine
     }
 }
